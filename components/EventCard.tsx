@@ -5,12 +5,12 @@ import Link from "next/link";
 import posthog from "posthog-js";
 
 interface Props {
-    title: string;
-    image: string;
-    slug: string;
-    location: string;
-    date: string;
-    time: string;
+  title: string;
+  image: string;
+  slug: string;
+  location: string;
+  date: string;
+  time: string;
 }
 
 const EventCard = ({ title, image, slug, location, date, time }: Props) => {
@@ -36,10 +36,10 @@ const EventCard = ({ title, image, slug, location, date, time }: Props) => {
 
       <div className="datetime">
         <div>
-            <Image src="/icons/calendar.svg" alt="date" width={14} height={14} />
-            <p>{date}</p>
-            <Image src="/icons/clock.svg" alt="time" width={14} height={14} />
-            <p>{time}</p>
+          <Image src="/icons/calendar.svg" alt="date" width={14} height={14} />
+          <p>{date}</p>
+          <Image src="/icons/clock.svg" alt="time" width={14} height={14} />
+          <p>{time}</p>
         </div>
       </div>
     </Link>
