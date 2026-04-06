@@ -182,8 +182,7 @@ function normalizeTime(timeString: string): string {
     return `${hours.toString().padStart(2, '0')}:${minutes}`;
 }
 
-// Create unique index on slug for better performance
-EventSchema.index({ slug: 1 }, { unique: true });
+// Note: slug index is already created by unique: true in the schema field definition
 
 // Create compound index for common queries
 EventSchema.index({ date: 1, mode: 1 });
