@@ -8,7 +8,7 @@ export const createBooking = async ({ eventId, slug, email }: { eventId: string;
     try {
         await connectDB();
 
-        const event = (await Event.findOne({ slug })).lean();
+        const event = await Event.findOne({ slug }).lean();
 
         if (!event) return { success: false, e: 'Event not found' };
 
