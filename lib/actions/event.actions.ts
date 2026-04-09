@@ -2,6 +2,18 @@
 import Event from "@/database/event.model";
 import connectDB from "../mongodb";
 
+export const getEventBySlug = async (slug: string) => {
+  try {
+    await connectDB();
+    const event = await Event.findOne({ slug }).lean();
+    if (!event) return null;
+    return JSON.parse(JSON.stringify(event));
+  } catch (e) {
+    console.error('[getEventBySlug] Error:', e);
+    return null;
+  }
+};
+
 export const getSimilarEventsBySlug = async (slug: string) => {
   try {
     await connectDB();
