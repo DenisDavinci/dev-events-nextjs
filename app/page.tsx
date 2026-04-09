@@ -1,13 +1,15 @@
 import EventCard from "@/components/EventCard";
 import ExploreBtn from "@/components/ExploreBtn";
-import { IEvent } from "@/database/event.model";
+import Event, { IEvent } from "@/database/event.model";
+import connectDB from "@/lib/mongodb";
 import { cacheLife } from "next/cache";
 
 const Page = async () => {
   'use cache';
   cacheLife('hours')
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/events`);
-  const { events } = await response.json();
+  await connectDB();
+  const events: IEvent[] = await Event.find().sort({ createdAt: -1 }).lean();
+
 
   return (
     <section>
